@@ -28,23 +28,23 @@ const Index = () => {
               <span className="text-sm font-medium text-secondary">Premium 3D Divine Craftsmanship</span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-ivory">
               Bring Divinity to Life with{" "}
-              <span className="text-secondary glow-gold">3D Precision</span>
+              <span className="text-wine glow-burgundy">3D Precision</span>
             </h1>
             
-            <p className="text-xl mb-8 text-white/90 leading-relaxed">
+            <p className="text-xl mb-8 text-ivory leading-relaxed">
               Experience the perfect fusion of ancient spirituality and modern technology. Each idol is meticulously crafted with divine attention to detail.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/products">
-                <Button size="lg" className="gradient-gold text-primary font-semibold text-lg px-8 shadow-gold hover:shadow-divine transition-divine w-full sm:w-auto">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8 shadow-burgundy hover:shadow-wine transition-smooth w-full sm:w-auto">
                   Explore Products
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20 font-semibold text-lg px-8 transition-divine w-full sm:w-auto">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8 shadow-burgundy hover:shadow-wine transition-smooth w-full sm:w-auto">
                   Order Now
                 </Button>
               </Link>

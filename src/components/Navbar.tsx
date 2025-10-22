@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,16 +24,16 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <Sparkles className="w-8 h-8 text-primary transition-smooth group-hover:text-accent group-hover:glow-burgundy" />
+              <Sparkles className="w-8 h-8 text-foreground transition-smooth group-hover:text-primary group-hover:glow-burgundy" />
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth" />
             </div>
-            <span className="text-2xl font-bold font-serif">
-              <span className="text-primary">Enlight</span> <span className="text-gradient-burgundy">Idols</span>
+            <span className="text-2xl font-bold font-serif text-foreground">
+              <span>Enlight</span> <span>Idols</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -49,7 +50,8 @@ const Navbar = () => {
                 />
               </Link>
             ))}
-            <Button variant="default" className="gradient-burgundy text-foreground font-semibold shadow-burgundy hover:shadow-wine transition-smooth">
+            <ThemeToggle />
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-burgundy hover:shadow-wine transition-smooth">
               Order Now
             </Button>
           </div>
@@ -82,8 +84,9 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="px-4">
-                <Button className="w-full gradient-burgundy text-foreground font-semibold shadow-burgundy">
+              <div className="px-4 flex items-center justify-between">
+                <ThemeToggle />
+                <Button className="flex-1 ml-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-burgundy">
                   Order Now
                 </Button>
               </div>
