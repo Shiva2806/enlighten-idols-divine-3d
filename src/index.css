@@ -8,103 +8,104 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 250 60% 10%;
+    --background: 0 0% 0%;
+    --foreground: 45 30% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 250 60% 10%;
+    --card: 0 0% 5%;
+    --card-foreground: 45 30% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 250 60% 10%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 45 30% 95%;
 
-    --primary: 250 60% 35%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 350 70% 35%;
+    --primary-foreground: 45 30% 95%;
 
-    --secondary: 45 100% 50%;
-    --secondary-foreground: 250 60% 10%;
+    --secondary: 355 65% 25%;
+    --secondary-foreground: 45 30% 95%;
 
-    --muted: 250 30% 96%;
-    --muted-foreground: 250 20% 50%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 45 20% 65%;
 
-    --accent: 280 70% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 350 70% 40%;
+    --accent-foreground: 45 30% 95%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 45 30% 95%;
 
-    --border: 250 30% 90%;
-    --input: 250 30% 90%;
-    --ring: 250 60% 35%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 350 70% 35%;
 
     --radius: 0.75rem;
 
-    /* Divine theme colors */
-    --divine-gold: 45 100% 50%;
-    --divine-gold-light: 45 100% 65%;
-    --divine-purple: 250 60% 35%;
-    --divine-purple-dark: 250 70% 25%;
-    --divine-navy: 230 50% 20%;
+    /* Burgundy & Wine theme colors */
+    --burgundy: 350 70% 35%;
+    --burgundy-dark: 355 65% 25%;
+    --wine: 355 70% 30%;
+    --wine-dark: 355 75% 20%;
+    --ivory: 45 30% 95%;
+    --ivory-soft: 45 25% 90%;
 
     /* Gradients */
-    --gradient-divine: linear-gradient(135deg, hsl(var(--divine-purple)) 0%, hsl(var(--divine-navy)) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(var(--divine-gold)) 0%, hsl(var(--divine-gold-light)) 100%);
-    --gradient-divine-radial: radial-gradient(circle at top, hsl(var(--divine-purple) / 0.1) 0%, transparent 70%);
+    --gradient-burgundy: linear-gradient(135deg, hsl(var(--burgundy)) 0%, hsl(var(--wine-dark)) 100%);
+    --gradient-wine: linear-gradient(135deg, hsl(var(--wine)) 0%, hsl(var(--burgundy-dark)) 100%);
+    --gradient-radial: radial-gradient(circle at top, hsl(var(--burgundy) / 0.15) 0%, transparent 70%);
 
     /* Effects */
-    --shadow-divine: 0 10px 40px -10px hsl(var(--divine-purple) / 0.3);
-    --shadow-gold: 0 0 30px hsl(var(--divine-gold) / 0.3);
-    --glow-gold: 0 0 20px hsl(var(--divine-gold) / 0.5);
+    --shadow-burgundy: 0 10px 40px -10px hsl(var(--burgundy) / 0.5);
+    --shadow-wine: 0 0 30px hsl(var(--wine) / 0.4);
+    --glow-burgundy: 0 0 20px hsl(var(--burgundy) / 0.6);
     
     /* Transitions */
-    --transition-divine: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 45 30% 95%;
+    --sidebar-primary: 350 70% 35%;
+    --sidebar-primary-foreground: 45 30% 95%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 45 30% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 350 70% 35%;
   }
 
   .dark {
-    --background: 250 60% 8%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;
+    --foreground: 45 30% 95%;
 
-    --card: 250 50% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 45 30% 95%;
 
-    --popover: 250 50% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 45 30% 95%;
 
-    --primary: 45 100% 55%;
-    --primary-foreground: 250 60% 10%;
+    --primary: 350 70% 35%;
+    --primary-foreground: 45 30% 95%;
 
-    --secondary: 250 40% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 355 65% 25%;
+    --secondary-foreground: 45 30% 95%;
 
-    --muted: 250 40% 15%;
-    --muted-foreground: 250 20% 70%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 45 20% 65%;
 
-    --accent: 280 70% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 350 70% 40%;
+    --accent-foreground: 45 30% 95%;
 
     --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 45 30% 95%;
 
-    --border: 250 40% 20%;
-    --input: 250 40% 20%;
-    --ring: 45 100% 55%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 350 70% 35%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 45 30% 95%;
+    --sidebar-primary: 350 70% 35%;
+    --sidebar-primary-foreground: 45 30% 95%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 45 30% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 350 70% 35%;
   }
 }
 
@@ -123,32 +124,32 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .gradient-divine {
-    background: var(--gradient-divine);
+  .gradient-burgundy {
+    background: var(--gradient-burgundy);
   }
 
-  .gradient-gold {
-    background: var(--gradient-gold);
+  .gradient-wine {
+    background: var(--gradient-wine);
   }
 
-  .text-gradient-gold {
+  .text-gradient-burgundy {
     @apply bg-clip-text text-transparent;
-    background: var(--gradient-gold);
+    background: var(--gradient-burgundy);
   }
 
-  .shadow-divine {
-    box-shadow: var(--shadow-divine);
+  .shadow-burgundy {
+    box-shadow: var(--shadow-burgundy);
   }
 
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
+  .shadow-wine {
+    box-shadow: var(--shadow-wine);
   }
 
-  .glow-gold {
-    box-shadow: var(--glow-gold);
+  .glow-burgundy {
+    box-shadow: var(--glow-burgundy);
   }
 
-  .transition-divine {
-    transition: var(--transition-divine);
+  .transition-smooth {
+    transition: var(--transition-smooth);
   }
 }

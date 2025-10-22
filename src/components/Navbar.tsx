@@ -23,11 +23,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <Sparkles className="w-8 h-8 text-primary transition-divine group-hover:text-secondary group-hover:glow-gold" />
-              <div className="absolute inset-0 bg-secondary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-divine" />
+              <Sparkles className="w-8 h-8 text-primary transition-smooth group-hover:text-accent group-hover:glow-burgundy" />
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth" />
             </div>
-            <span className="text-2xl font-bold text-primary font-serif">
-              Enlight <span className="text-gradient-gold">Idols</span>
+            <span className="text-2xl font-bold font-serif">
+              <span className="text-primary">Enlight</span> <span className="text-gradient-burgundy">Idols</span>
             </span>
           </Link>
 
@@ -37,19 +37,19 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium transition-divine hover:text-primary relative group ${
-                  isActive(link.path) ? "text-primary" : "text-muted-foreground"
+                className={`font-medium transition-smooth hover:text-primary relative group ${
+                  isActive(link.path) ? "text-primary" : "text-foreground"
                 }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-gold transform origin-left transition-divine ${
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-burgundy transform origin-left transition-smooth ${
                     isActive(link.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
               </Link>
             ))}
-            <Button variant="default" className="gradient-gold text-primary font-semibold shadow-gold hover:shadow-divine transition-divine">
+            <Button variant="default" className="gradient-burgundy text-foreground font-semibold shadow-burgundy hover:shadow-wine transition-smooth">
               Order Now
             </Button>
           </div>
@@ -57,7 +57,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-divine"
+            className="md:hidden text-foreground hover:text-primary transition-smooth"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -73,17 +73,17 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`font-medium transition-divine hover:text-primary px-4 py-2 rounded-lg ${
+                  className={`font-medium transition-smooth hover:text-primary px-4 py-2 rounded-lg ${
                     isActive(link.path)
                       ? "text-primary bg-primary/10"
-                      : "text-muted-foreground"
+                      : "text-foreground"
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="px-4">
-                <Button className="w-full gradient-gold text-primary font-semibold shadow-gold">
+                <Button className="w-full gradient-burgundy text-foreground font-semibold shadow-burgundy">
                   Order Now
                 </Button>
               </div>
