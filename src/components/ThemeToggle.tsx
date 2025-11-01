@@ -6,28 +6,17 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
-    // Check for saved theme preference or default to 'dark'
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const savedTheme = localStorage.getItem("enlighthub-theme") as "light" | "dark" | null;
     const initialTheme = savedTheme || "dark";
     setTheme(initialTheme);
-    
-    if (initialTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.dataset.theme = initialTheme;
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    localStorage.setItem("enlighthub-theme", newTheme);
+    document.documentElement.dataset.theme = newTheme;
   };
 
   return (
@@ -35,7 +24,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="text-foreground hover:text-primary transition-smooth"
+      className="hover:bg-accent transition-divine"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

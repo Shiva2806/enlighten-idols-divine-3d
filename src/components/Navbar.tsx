@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useCart } from "@/store/cart";
+import { openWhatsAppGeneral } from "@/lib/whatsapp";
+import logoMark from "@/assets/logo-mark.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -22,13 +26,15 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative">
-              <Sparkles className="w-8 h-8 text-foreground transition-smooth group-hover:text-primary group-hover:glow-burgundy" />
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth" />
-            </div>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img 
+              src={logoMark} 
+              alt="TheEnlightHub" 
+              className="w-10 h-10 object-contain transition-divine group-hover:scale-110"
+              style={{ filter: 'drop-shadow(0 0 4px rgba(231, 200, 120, 0.4))' }}
+            />
             <span className="text-2xl font-bold font-serif text-foreground">
-              <span>Enlight</span> <span>Idols</span>
+              TheEnlightHub
             </span>
           </Link>
 
@@ -38,32 +44,57 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium transition-smooth hover:text-primary relative group ${
-                  isActive(link.path) ? "text-primary" : "text-foreground"
+                className={`font-medium transition-divine hover:text-gold relative group ${
+                  isActive(link.path) ? "text-gold" : "text-foreground"
                 }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-burgundy transform origin-left transition-smooth ${
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gold transform origin-left transition-divine ${
                     isActive(link.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
               </Link>
             ))}
             <ThemeToggle />
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-burgundy hover:shadow-wine transition-smooth">
+            <Link to="/cart" className="relative">
+              <Button variant="ghost" size="icon">
+                <ShoppingCart className="w-5 h-5" />
+                {totalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {totalItems()}
+                  </span>
+                )}
+              </Button>
+            </Link>
+            <Button 
+              onClick={openWhatsAppGeneral}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-gold transition-divine"
+            >
               Order Now
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-smooth"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <Link to="/cart" className="relative">
+              <Button variant="ghost" size="icon">
+                <ShoppingCart className="w-5 h-5" />
+                {totalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {totalItems()}
+                  </span>
+                )}
+              </Button>
+            </Link>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground hover:text-gold transition-divine"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -86,7 +117,10 @@ const Navbar = () => {
               ))}
               <div className="px-4 flex items-center justify-between">
                 <ThemeToggle />
-                <Button className="flex-1 ml-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-burgundy">
+                <Button 
+                  onClick={openWhatsAppGeneral}
+                  className="flex-1 ml-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-gold"
+                >
                   Order Now
                 </Button>
               </div>

@@ -1,34 +1,30 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import logoMark from "@/assets/logo-mark.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center space-x-2 group mb-4">
-              <Sparkles className="w-8 h-8 text-secondary glow-gold" />
-              <span className="text-2xl font-bold font-serif">
-                Enlight <span className="text-secondary">Idols</span>
+            <Link to="/" className="flex items-center space-x-3 mb-4">
+              <img src={logoMark} alt="TheEnlightHub" className="w-10 h-10 object-contain" />
+              <span className="text-2xl font-bold font-serif text-gradient-gold">
+                TheEnlightHub
               </span>
             </Link>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Bringing divinity to life with precision-crafted 3D idols. Each piece is a masterwork of divine artistry and modern technology.
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Bringing divinity to life with handcrafted divine creations. Each piece is a masterwork of devotion and artistry.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-4 text-secondary">Quick Links</h3>
+            <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Quick Links</h3>
             <ul className="space-y-2">
               {["Home", "About", "Products", "Contact"].map((item) => (
                 <li key={item}>
-                  <Link
-                    to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                    className="text-primary-foreground/80 hover:text-secondary transition-divine text-sm"
-                  >
+                  <Link to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="text-muted-foreground hover:text-gold transition-divine text-sm">
                     {item}
                   </Link>
                 </li>
@@ -36,56 +32,30 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-4 text-secondary">Contact Us</h3>
+            <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
-                <Phone className="w-4 h-4 mt-0.5 text-secondary flex-shrink-0" />
-                <span className="text-primary-foreground/80">+91 1234567890</span>
+                <Phone className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" />
+                <span className="text-muted-foreground">+91 7780391225</span>
               </li>
               <li className="flex items-start space-x-2">
-                <Mail className="w-4 h-4 mt-0.5 text-secondary flex-shrink-0" />
-                <span className="text-primary-foreground/80">info@enlightidols.com</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 mt-0.5 text-secondary flex-shrink-0" />
-                <span className="text-primary-foreground/80">123 Divine Street, Sacred City, IN 400001</span>
+                <Mail className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" />
+                <span className="text-muted-foreground">contact@theenlighthub.com</span>
               </li>
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
-            <h3 className="font-serif font-semibold text-lg mb-4 text-secondary">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/20 transition-divine hover:glow-gold"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5 text-secondary" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/20 transition-divine hover:glow-gold"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5 text-secondary" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center hover:bg-secondary/20 transition-divine hover:glow-gold"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5 text-secondary" />
-              </a>
-            </div>
+            <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Admin</h3>
+            <Link to="/admin/login" className="text-muted-foreground hover:text-gold transition-divine text-sm">
+              Admin Login
+            </Link>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} Enlight Idols. All rights reserved. Crafted with divine precision.</p>
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} TheEnlightHub. All rights reserved.</p>
         </div>
       </div>
     </footer>
