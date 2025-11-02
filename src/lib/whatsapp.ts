@@ -1,8 +1,28 @@
 export const WHATSAPP_NUMBER = "917780391225";
 
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 export function openWhatsApp(message: string) {
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
+  const text = encodeURIComponent(message);
+  const deepLink = `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${text}`;
+  const webLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  
+  if (isMobile()) {
+    // Try deep link first on mobile
+    window.location.href = deepLink;
+    // Fallback to web link if app not installed
+    setTimeout(() => {
+      const opened = window.open(webLink, '_blank', 'noopener,noreferrer');
+      if (!opened) window.location.href = webLink;
+    }, 700);
+  } else {
+    // Desktop: open in new tab
+    const opened = window.open(webLink, '_blank', 'noopener,noreferrer');
+    // Fallback if popup blocked
+    if (!opened) window.location.href = webLink;
+  }
 }
 
 export interface CartItem {
