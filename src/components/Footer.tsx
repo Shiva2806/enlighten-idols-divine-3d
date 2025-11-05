@@ -41,15 +41,17 @@ const Footer = () => {
               </li>
               <li className="flex items-start space-x-2">
                 <Mail className="w-4 h-4 mt-0.5 text-gold flex-shrink-0" />
-                <span className="text-muted-foreground">contact@theenlighthub.com</span>
+                <a href="mailto:info@theenlighthub.com" className="text-muted-foreground hover:text-gold transition-divine">
+                  info@theenlighthub.com
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Admin</h3>
-            <Link to="/admin/login" className="text-muted-foreground hover:text-gold transition-divine text-sm">
-              Admin Login
+            <Link to="/auth" className="text-muted-foreground hover:text-gold transition-divine text-sm">
+              Login / Signup
             </Link>
           </div>
         </div>

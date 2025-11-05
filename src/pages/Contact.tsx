@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
-import { openWhatsAppContact } from "@/lib/whatsapp";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -76,26 +76,26 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <div className="flex items-start gap-4 p-6 bg-muted rounded-xl">
+              <div className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
-                  <p className="text-muted-foreground">+91 7780391225</p>
-                  <Button onClick={openWhatsAppContact} variant="link" className="p-0 h-auto mt-2">
-                    Chat Now
-                  </Button>
+                  <p className="text-foreground/80 mb-2">+91 7780391225</p>
+                  <WhatsAppButton label="Chat Now" className="text-primary" />
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-muted rounded-xl">
+              <div className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground">contact@theenlighthub.com</p>
+                  <a href="mailto:info@theenlighthub.com" className="text-foreground/80 hover:text-primary transition-divine hover:underline">
+                    info@theenlighthub.com
+                  </a>
                 </div>
               </div>
             </div>
