@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, ShoppingCart, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useCart } from "@/store/cart";
+import { useAuth } from "@/store/authContext";
 import { openWhatsAppGeneral } from "@/lib/whatsapp";
 import logoMark from "@/assets/logo-mark.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalItems } = useCart();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -67,6 +70,32 @@ const Navbar = () => {
                 )}
               </Button>
             </Link>
+            {isAuthenticated ? (
+              <>
+                <Button 
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => navigate("/profile")}
+                  title={user?.name}
+                >
+                  <User className="w-5 h-5" />
+                </Button>
+                <Button 
+                  variant="ghost"
+                  size="icon"
+                  onClick={logout}
+                  title="Logout"
+                >
+                  <LogOut className="w-5 h-5" />
+                </Button>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button variant="outline" className="font-semibold">
+                  Login/Signup
+                </Button>
+              </Link>
+            )}
             <Button 
               onClick={openWhatsAppGeneral}
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-gold transition-divine"
@@ -115,11 +144,45 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="px-4 flex items-center justify-between">
-                <ThemeToggle />
+              <div className="px-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <ThemeToggle />
+                  {isAuthenticated ? (
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          navigate("/profile");
+                          setIsOpen(false);
+                        }}
+                      >
+                        <User className="w-4 h-4 mr-2" />
+                        Profile
+                      </Button>
+                      <Button 
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          logout();
+                          setIsOpen(false);
+                        }}
+                      >
+                        <LogOut className="w-4 h-4 mr-2" />
+                        Logout
+                      </Button>
+                    </div>
+                  ) : (
+                    <Link to="/login" onClick={() => setIsOpen(false)}>
+                      <Button variant="outline" size="sm">
+                        Login/Signup
+                      </Button>
+                    </Link>
+                  )}
+                </div>
                 <Button 
                   onClick={openWhatsAppGeneral}
-                  className="flex-1 ml-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-gold"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-gold"
                 >
                   Order Now
                 </Button>

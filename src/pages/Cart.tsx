@@ -1,16 +1,31 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useCart } from '@/store/cart';
-import { openWhatsAppOrder } from '@/lib/whatsapp';
+import { useAuth } from '@/store/authContext';
+import { WHATSAPP_NUMBER } from '@/lib/config';
 import { ShoppingBag, Minus, Plus, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
   const { items, updateQty, removeItem, totalPrice, clearCart } = useCart();
+  const { user, isAuthenticated } = useAuth();
 
   const handleCheckout = () => {
     if (items.length === 0) return;
-    openWhatsAppOrder(items);
+    
+    const userName = isAuthenticated ? user?.name : "Guest";
+    const userEmail = isAuthenticated ? user?.email : "";
+    
+    const orderDetails = items.map((item, idx) => 
+      `${idx + 1}. ${item.name} x${item.qty} = ₹${(item.price * item.qty).toLocaleString()}`
+    ).join('\n');
+    
+    const total = totalPrice();
+    const message = `Hi TheEnlightHub, I'd like to place an order:\n\n${isAuthenticated ? `Name: ${userName}\nEmail: ${userEmail}\n\n` : 'Guest Order\n\n'}${orderDetails}\n\n---\nSubtotal: ₹${total.toLocaleString()}\nShipping: TBD\nTotal: ₹${total.toLocaleString()}\n\nPlease confirm delivery address and payment preference.`;
+    
+    const encodedMsg = encodeURIComponent(message);
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   if (items.length === 0) {

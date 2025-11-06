@@ -2,11 +2,17 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, ArrowLeft, Package, Ruler, Palette } from "lucide-react";
 import { getProductById } from "@/data/products";
+import { useCart } from "@/store/cart";
+import { useAuth } from "@/store/authContext";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { WHATSAPP_NUMBER } from "@/lib/config";
 import { toast } from "sonner";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const product = getProductById(id || "");
+  const { addItem } = useCart();
+  const { user } = useAuth();
 
   if (!product) {
     return (
@@ -25,9 +31,22 @@ const ProductDetails = () => {
   }
 
   const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
     toast.success("Added to cart!", {
       description: `${product.name} has been added to your cart.`,
     });
+  };
+
+  const handleWhatsAppEnquiry = () => {
+    const message = `Hi TheEnlightHub, I'm interested in:\n\n${product.name}\nPrice: ₹${product.price.toLocaleString()}\n\n${user ? `Name: ${user.name}\nEmail: ${user.email}` : "Guest inquiry"}\n\nPlease share more details.`;
+    const encodedMsg = encodeURIComponent(message);
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -115,11 +134,14 @@ const ProductDetails = () => {
                   <ShoppingCart className="w-5 h-5 mr-2" />
                   Add to Cart
                 </Button>
-                <Link to="/contact" className="flex-1">
-                  <Button size="lg" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-divine text-lg font-semibold">
-                    Order Now
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-divine text-lg font-semibold"
+                  onClick={handleWhatsAppEnquiry}
+                >
+                  Enquire on WhatsApp
+                </Button>
               </div>
 
               {/* Detailed Description */}
