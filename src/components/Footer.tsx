@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
 import logoMark from "@/assets/logo-mark.png";
+import { useAuth } from "@/store/authContext";
 
 const Footer = () => {
+  const { isAuthenticated } = useAuth();
+  
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
@@ -48,12 +51,14 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Admin</h3>
-            <Link to="/auth" className="text-muted-foreground hover:text-gold transition-divine text-sm">
-              Login / Signup
-            </Link>
-          </div>
+          {!isAuthenticated && (
+            <div>
+              <h3 className="font-serif font-semibold text-lg mb-4 text-foreground">Account</h3>
+              <Link to="/login" className="text-muted-foreground hover:text-gold hover:underline underline-offset-4 transition-divine text-sm">
+                Login / Signup
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
