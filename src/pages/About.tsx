@@ -24,12 +24,44 @@ const About = () => {
             <h2 className="font-serif text-4xl font-bold text-gradient-gold mb-6 text-center">
               Who We Are
             </h2>
-            <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
               <p>
-                TheEnlightHub is devoted to preserving the beauty of sacred artistry through devotion, design, and heritage. Each creation is crafted with reverence and authenticity.
+                At TheEnlightHub, art meets innovation. We blend timeless craftsmanship with modern design to create meaningful pieces that inspire. From divine idols that honor tradition to contemporary collectibles that celebrate imagination, every creation reflects our commitment to excellence.
               </p>
-              <p className="text-center italic mt-8 text-xl">
-                Every creation from TheEnlightHub is born from devotion — designed, sculpted, and finished with reverence and attention to detail.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Make */}
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-serif text-4xl font-bold text-gradient-gold mb-6 text-center">
+              What We Make
+            </h2>
+            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+              <p>
+                From divine idols and anime figures to accessories and personalized creations — every piece is carefully designed, crafted, and finished. Whether you seek a traditional sculpture for your sacred space, a collectible figure for your display, or a unique gift that tells a personal story, we bring your vision to life with precision and care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Materials */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-serif text-4xl font-bold text-gradient-gold mb-6 text-center">
+              Our Materials
+            </h2>
+            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+              <p>
+                We use high-quality PLA+ — lightweight, durable, and environmentally friendly. Unlike traditional materials, PLA+ offers a smooth texture and exceptional detail retention, allowing us to capture intricate designs with precision. It's a sustainable choice that doesn't compromise on quality, ensuring your creations are both beautiful and responsible.
+              </p>
+              <p className="text-center italic mt-8 text-xl text-foreground">
+                Every piece tells a story — of imagination, precision, and mindful design.
               </p>
             </div>
           </div>

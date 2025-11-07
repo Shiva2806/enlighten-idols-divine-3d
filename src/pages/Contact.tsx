@@ -36,8 +36,11 @@ const Contact = () => {
             <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 text-gradient-gold">
               Get in Touch
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              We'd love to hear from you. Reach out for inquiries or blessings.
+            <p className="text-xl text-muted-foreground leading-relaxed mb-4">
+              Looking for a custom model? From concept sketches to ready-to-craft designs, TheEnlightHub brings your imagination to life.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Reach out for inquiries, custom orders, or any questions about our creations.
             </p>
           </div>
         </div>
