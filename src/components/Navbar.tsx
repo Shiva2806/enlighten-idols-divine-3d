@@ -93,6 +93,17 @@ const Navbar = () => {
                 >
                   <User className="w-5 h-5" />
                 </Button>
+                <Button 
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  title="Logout"
+                >
+                  <LogOut className="w-5 h-5" />
+                </Button>
               </>
             )}
           </div>

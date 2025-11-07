@@ -18,7 +18,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Bringing divinity to life with handcrafted divine creations. Each piece is a masterwork of devotion and artistry.
+              Crafted in eco-friendly PLA+ — precision, creativity, and sustainability.
             </p>
           </div>
 

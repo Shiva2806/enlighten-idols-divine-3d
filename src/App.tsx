@@ -12,6 +12,11 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import AuthPage from "./pages/AuthPage";
 import Profile from "./pages/Profile";
+import ProfileEdit from "./pages/ProfileEdit";
+import Wishlist from "./pages/Wishlist";
+import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
+import OrderDetails from "./pages/OrderDetails";
 import AdminDashboard from "./pages/admin/Dashboard";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
@@ -39,6 +44,11 @@ const App = () => (
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<AuthPage />} />
                 <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                <Route path="/profile/edit" element={<ProtectedRoute><ProfileEdit /></ProtectedRoute>} />
+                <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+                <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+                <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+                <Route path="/orders/:id" element={<ProtectedRoute><OrderDetails /></ProtectedRoute>} />
                 <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

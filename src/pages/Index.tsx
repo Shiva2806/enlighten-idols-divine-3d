@@ -21,12 +21,12 @@ const Index = () => {
         <div className="container mx-auto px-4 z-10 relative">
           <div className="max-w-2xl">
             <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-foreground">
-              Bring Divinity to Life with{" "}
+              Bring Ideas to Life with{" "}
               <span className="text-gradient-gold">Timeless Craftsmanship</span>
             </h1>
             
             <p className="text-xl mb-8 text-foreground leading-relaxed">
-              Exquisite divine creations crafted with devotion, precision, and authenticity.
+              We design and produce high-quality creations — from traditional idols and anime collectibles to everyday accessories and custom gifts — all made with lightweight, eco-friendly PLA+ material.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
