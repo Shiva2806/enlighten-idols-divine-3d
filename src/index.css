@@ -185,4 +185,68 @@
       transform: none;
     }
   }
+
+  /* Hero Mosaic Blended Background */
+  .hero-mosaic-wrap {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    background: radial-gradient(1200px 500px at 50% 0%, rgba(91,31,42,.22), rgba(0,0,0,.82));
+  }
+
+  .hero-mosaic {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    filter: saturate(1.04) contrast(1.05);
+  }
+
+  .hero-mosaic > div {
+    position: relative;
+    overflow: hidden;
+    transform: skewY(-2.5deg);
+  }
+
+  .hero-mosaic .img {
+    position: absolute;
+    inset: -6% -6% -6% -6%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.8px);
+  }
+
+  .hero-mosaic .mask-left,
+  .hero-mosaic .mask-right {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+  }
+
+  .hero-burgundy-tint {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(91,31,42,.35), rgba(0,0,0,.55) 60%, rgba(0,0,0,.75));
+    pointer-events: none;
+  }
+
+  .hero-fore {
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-mosaic {
+      grid-template-columns: 1fr;
+    }
+    .hero-mosaic > div {
+      transform: none;
+    }
+  }
 }

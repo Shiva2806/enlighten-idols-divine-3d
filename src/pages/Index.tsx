@@ -8,20 +8,43 @@ import heroKeychain from "@/assets/hero-keychain.jpg";
 import heroCustom from "@/assets/hero-custom.jpg";
 
 const Index = () => {
+  const items = [
+    { src: heroIdol, alt: "PLA+ printed Ganesha idol with visible layer lines" },
+    { src: heroAnime, alt: "PLA+ printed anime figure in matte plastic" },
+    { src: heroKeychain, alt: "PLA+ printed geometric keychain with matte finish" },
+    { src: heroCustom, alt: "Custom PLA+ printed creation with visible filament texture" },
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-foreground">
+      {/* Hero Section with Blended Mosaic Background */}
+      <section className="hero-mosaic-wrap">
+        {/* BACKGROUND: blended 4-tile collage */}
+        <div className="hero-mosaic" aria-hidden="true">
+          {items.map((it, i) => (
+            <div key={i}>
+              <div
+                className={`img ${i % 2 === 0 ? 'mask-left' : 'mask-right'}`}
+                style={{ backgroundImage: `url(${it.src})` }}
+                role="img"
+                aria-label={it.alt}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="hero-burgundy-tint" />
+        
+        {/* FOREGROUND: hero text and buttons */}
+        <div className="hero-fore flex items-center min-h-[80vh]">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto text-center">
+              <h1 className="font-serif text-4xl md:text-6xl font-extrabold leading-tight text-foreground mb-6">
                 Bring Ideas to Life with{" "}
                 <span className="text-gradient-gold">Timeless Craftsmanship</span>
               </h1>
               
               <p className="text-xl mb-8 text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                We design and produce high-quality creations — from traditional idols and anime collectibles to everyday accessories and custom gifts — all made with lightweight, eco-friendly PLA+ material.
+                We design and produce high-quality creations — from traditional idols and anime collectibles to everyday accessories and custom gifts — all made with lightweight, eco-friendly <strong>PLA+</strong> material.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -40,78 +63,6 @@ const Index = () => {
                 </Button>
               </div>
             </div>
-
-            {/* Diagonal Collage */}
-            <section id="home-collage" className="w-full mt-16">
-              {/* Desktop: 4 columns */}
-              <div className="hidden lg:grid grid-cols-4 gap-6">
-                {[
-                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
-                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
-                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
-                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
-                ].map((item, idx) => (
-                  <Link 
-                    key={idx}
-                    to={item.href}
-                    className="diag-panel h-[360px] block"
-                  >
-                    <img className="diag-img" src={item.img} alt={item.alt} />
-                    <div className="diag-overlay" />
-                    <div className="diag-title">
-                      <h3 className="text-2xl md:text-3xl">{item.label}</h3>
-                      <div className="diag-sub">Crafted in PLA+</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Tablet: 2x2 */}
-              <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6">
-                {[
-                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
-                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
-                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
-                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
-                ].map((item, idx) => (
-                  <Link 
-                    key={idx}
-                    to={item.href}
-                    className="diag-panel h-[280px] block"
-                  >
-                    <img className="diag-img" src={item.img} alt={item.alt} />
-                    <div className="diag-overlay" />
-                    <div className="diag-title">
-                      <h3 className="text-xl">{item.label}</h3>
-                      <div className="diag-sub">Crafted in PLA+</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Mobile: stacked */}
-              <div className="sm:hidden space-y-4">
-                {[
-                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
-                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
-                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
-                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
-                ].map((item, idx) => (
-                  <Link 
-                    key={idx}
-                    to={item.href}
-                    className="diag-panel h-[220px] block"
-                  >
-                    <img className="diag-img" src={item.img} alt={item.alt} />
-                    <div className="diag-overlay" />
-                    <div className="diag-title">
-                      <h3 className="text-lg">{item.label}</h3>
-                      <div className="diag-sub text-sm">Crafted in PLA+</div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
           </div>
         </div>
       </section>
