@@ -6,9 +6,11 @@
 
 @layer base {
   :root {
-    /* Brand Colors */
-    --gold: 45 80% 70%;
-    --accent: 350 70% 30%;
+    /* Brand Colors - Burgundy Theme */
+    --burgundy: 350 53% 24%; /* #5B1F2A in HSL */
+    --burgundy-dark: 350 63% 15%; /* #3A0F16 in HSL */
+    --gold: 43 60% 66%; /* #E8C26B in HSL */
+    --accent: 350 53% 24%;
     --radius: 1rem;
   }
 
@@ -54,9 +56,9 @@
     --card-foreground: var(--text);
     --popover: var(--card);
     --popover-foreground: var(--text);
-    --primary: var(--accent);
+    --primary: var(--burgundy);
     --primary-foreground: 45 30% 95%;
-    --secondary: 355 65% 25%;
+    --secondary: var(--burgundy-dark);
     --secondary-foreground: 45 30% 95%;
     --muted-bg: 0 0% 12%;
     --muted-foreground: var(--muted);
@@ -95,22 +97,24 @@
     background-color: hsl(var(--gold));
   }
 
+  .bg-burgundy {
+    background-color: hsl(var(--burgundy));
+  }
+
   .text-gradient-gold {
-    background: linear-gradient(180deg, #e7c878, #d8b269);
+    background: linear-gradient(180deg, #E8C26B, #d4ad52);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 6px rgba(231, 200, 120, 0.35);
   }
 
   .gold-text {
-    background: linear-gradient(180deg, #e7c878, #d8b269);
+    background: linear-gradient(180deg, #E8C26B, #d4ad52);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 6px rgba(231, 200, 120, 0.35);
   }
 
   .shadow-gold {
@@ -119,5 +123,66 @@
 
   .transition-divine {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Diagonal Collage Styles */
+  .diag-panel {
+    clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(232,194,107,.12);
+    background: linear-gradient(135deg, hsl(var(--burgundy-dark)), hsl(var(--bg)));
+  }
+
+  .diag-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.6s ease;
+    filter: saturate(1.05) contrast(1.05);
+  }
+
+  .diag-panel:hover .diag-img {
+    transform: scale(1.08) translateY(-6px);
+  }
+
+  .diag-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(91,31,42,.15), rgba(0,0,0,.55) 55%, rgba(0,0,0,.75));
+  }
+
+  .diag-title {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0,0,0,.6);
+    transition: transform 0.4s ease;
+  }
+
+  .diag-panel:hover .diag-title {
+    transform: translateY(-4px);
+  }
+
+  .diag-title h3 {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+
+  .diag-sub {
+    color: #E8C26B;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .diag-panel:hover .diag-img,
+    .diag-panel:hover .diag-title {
+      transform: none;
+    }
   }
 }

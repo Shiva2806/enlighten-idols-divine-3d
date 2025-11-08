@@ -41,31 +41,77 @@ const Index = () => {
               </div>
             </div>
 
-            {/* 2x2 Product Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-              {[
-                { img: heroIdol, label: "Traditional Idols", alt: "Crafted idol in PLA+" },
-                { img: heroAnime, label: "Anime Collectibles", alt: "Anime figure collectible" },
-                { img: heroKeychain, label: "Keychains & Utilities", alt: "Decorative keychain" },
-                { img: heroCustom, label: "Custom Creations", alt: "Personalized gift piece" }
-              ].map((item, idx) => (
-                <div 
-                  key={idx}
-                  className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:shadow-gold transition-divine aspect-square"
-                >
-                  <img 
-                    src={item.img} 
-                    alt={item.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="font-serif text-2xl font-bold text-foreground mb-1">{item.label}</p>
-                    <p className="text-sm text-muted-foreground">Crafted in PLA+</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* Diagonal Collage */}
+            <section id="home-collage" className="w-full mt-16">
+              {/* Desktop: 4 columns */}
+              <div className="hidden lg:grid grid-cols-4 gap-6">
+                {[
+                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
+                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
+                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
+                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
+                ].map((item, idx) => (
+                  <Link 
+                    key={idx}
+                    to={item.href}
+                    className="diag-panel h-[360px] block"
+                  >
+                    <img className="diag-img" src={item.img} alt={item.alt} />
+                    <div className="diag-overlay" />
+                    <div className="diag-title">
+                      <h3 className="text-2xl md:text-3xl">{item.label}</h3>
+                      <div className="diag-sub">Crafted in PLA+</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Tablet: 2x2 */}
+              <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6">
+                {[
+                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
+                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
+                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
+                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
+                ].map((item, idx) => (
+                  <Link 
+                    key={idx}
+                    to={item.href}
+                    className="diag-panel h-[280px] block"
+                  >
+                    <img className="diag-img" src={item.img} alt={item.alt} />
+                    <div className="diag-overlay" />
+                    <div className="diag-title">
+                      <h3 className="text-xl">{item.label}</h3>
+                      <div className="diag-sub">Crafted in PLA+</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Mobile: stacked */}
+              <div className="sm:hidden space-y-4">
+                {[
+                  { img: heroIdol, label: "Traditional Idols", alt: "PLA+ printed Ganesha idol with visible layer lines", href: "/products?category=idols" },
+                  { img: heroAnime, label: "Anime Collectibles", alt: "PLA+ printed anime figure in matte plastic", href: "/products?category=collectibles" },
+                  { img: heroKeychain, label: "Keychains & Utilities", alt: "PLA+ printed geometric keychain with matte finish", href: "/products?category=utilities" },
+                  { img: heroCustom, label: "Custom Creations", alt: "Custom PLA+ printed creation with visible filament texture", href: "/products?category=custom" }
+                ].map((item, idx) => (
+                  <Link 
+                    key={idx}
+                    to={item.href}
+                    className="diag-panel h-[220px] block"
+                  >
+                    <img className="diag-img" src={item.img} alt={item.alt} />
+                    <div className="diag-overlay" />
+                    <div className="diag-title">
+                      <h3 className="text-lg">{item.label}</h3>
+                      <div className="diag-sub text-sm">Crafted in PLA+</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </section>

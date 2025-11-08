@@ -9,7 +9,7 @@ import { User, Mail, Phone, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Profile() {
-  const { user, role, updateProfile } = useAuth();
+  const { user, role, updateProfile, logout } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -25,9 +25,22 @@ export default function Profile() {
   return (
     <div className="min-h-screen py-20 bg-gradient-to-b from-muted/50 to-background">
       <div className="container mx-auto px-4 max-w-3xl">
-        <div className="mb-8">
-          <h1 className="text-4xl font-serif font-bold gold-text mb-2">My Profile</h1>
-          <p className="text-muted-foreground">Manage your account settings</p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-serif font-bold gold-text mb-2">My Profile</h1>
+            <p className="text-muted-foreground">Manage your account settings</p>
+          </div>
+          <Button 
+            onClick={() => {
+              logout();
+              toast.success("Logged out successfully");
+              window.location.href = "/";
+            }}
+            variant="outline"
+            className="border-burgundy text-burgundy hover:bg-burgundy hover:text-white"
+          >
+            Logout
+          </Button>
         </div>
 
         <div className="space-y-6">
