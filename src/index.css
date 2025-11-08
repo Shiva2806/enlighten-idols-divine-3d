@@ -191,7 +191,7 @@
     position: relative;
     overflow: hidden;
     min-height: 80vh;
-    background: linear-gradient(135deg, #3A0F16 0%, #5B1F2A 50%, #3A0F16 100%);
+    background: radial-gradient(1200px 500px at 50% 0%, rgba(91,31,42,.22), rgba(0,0,0,.82));
   }
 
   .hero-mosaic {
@@ -200,61 +200,34 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
+    filter: saturate(1.04) contrast(1.05);
   }
 
   .hero-mosaic > div {
     position: relative;
     overflow: hidden;
-  }
-
-  /* Diagonal clip-paths - alternating angles, images stay upright */
-  .hero-mosaic > div:nth-child(1) {
-    clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
-  }
-  .hero-mosaic > div:nth-child(2) {
-    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%);
-  }
-  .hero-mosaic > div:nth-child(3) {
-    clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
-  }
-  .hero-mosaic > div:nth-child(4) {
-    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%);
+    transform: skewY(-2.5deg);
   }
 
   .hero-mosaic .img {
     position: absolute;
-    inset: 0;
+    inset: -6% -6% -6% -6%;
     background-size: cover;
     background-position: center;
-    filter: saturate(0.9) contrast(1.1);
+    filter: blur(0.8px);
   }
 
-  /* Burgundy overlay on each image */
-  .hero-mosaic > div::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(91,31,42,.65), rgba(58,15,22,.75));
-    mix-blend-mode: multiply;
-    z-index: 1;
-  }
-
-  /* Golden center highlight */
-  .hero-mosaic::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 800px 400px at 50% 40%, rgba(232,194,107,.12), transparent 70%);
-    pointer-events: none;
-    z-index: 2;
+  .hero-mosaic .mask-left,
+  .hero-mosaic .mask-right {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
   }
 
   .hero-burgundy-tint {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(91,31,42,.25) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.85) 100%);
+    background: linear-gradient(180deg, rgba(91,31,42,.35), rgba(0,0,0,.55) 60%, rgba(0,0,0,.75));
     pointer-events: none;
-    z-index: 3;
   }
 
   .hero-fore {
@@ -266,14 +239,6 @@
     .hero-mosaic {
       grid-template-columns: repeat(2, 1fr);
     }
-    .hero-mosaic > div:nth-child(1),
-    .hero-mosaic > div:nth-child(2) {
-      clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
-    }
-    .hero-mosaic > div:nth-child(3),
-    .hero-mosaic > div:nth-child(4) {
-      clip-path: polygon(3% 0, 100% 0, 100% 100%, 0 100%);
-    }
   }
 
   @media (max-width: 640px) {
@@ -281,7 +246,7 @@
       grid-template-columns: 1fr;
     }
     .hero-mosaic > div {
-      clip-path: none;
+      transform: none;
     }
   }
 }

@@ -24,7 +24,7 @@ const Index = () => {
           {items.map((it, i) => (
             <div key={i}>
               <div
-                className="img"
+                className={`img ${i % 2 === 0 ? 'mask-left' : 'mask-right'}`}
                 style={{ backgroundImage: `url(${it.src})` }}
                 role="img"
                 aria-label={it.alt}
