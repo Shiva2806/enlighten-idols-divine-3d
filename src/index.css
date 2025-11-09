@@ -12,6 +12,13 @@
     --gold: 43 60% 66%; /* #E8C26B in HSL */
     --accent: 350 53% 24%;
     --radius: 1rem;
+
+    /* TheEnlightHub Hero Colors (Reference-matched burgundy/plum) */
+    --th-burgundy-1: #2B0E12; /* deep wine */
+    --th-burgundy-2: #5B1F2A; /* primary burgundy */
+    --th-plum: #7C3543; /* plum midtone */
+    --th-gold: #E1C06B; /* headline accent/glow */
+    --th-gold-dim: #8A6A2E; /* dim glow */
   }
 
   /* Light Theme */
@@ -191,7 +198,7 @@
     position: relative;
     overflow: hidden;
     min-height: 80vh;
-    background: linear-gradient(135deg, hsl(var(--burgundy-dark)), hsl(var(--burgundy)));
+    background: radial-gradient(1200px 500px at 50% 0%, color-mix(in oklab, var(--th-plum) 55%, black), rgba(0,0,0,.85));
   }
 
   .hero-mosaic {
@@ -199,7 +206,8 @@
     inset: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    overflow: hidden;
+    filter: saturate(1.04) contrast(1.06);
   }
 
   .hero-mosaic > div {
@@ -207,39 +215,59 @@
     overflow: hidden;
   }
 
-  /* Diagonal clip-path for slanted dividing lines - alternating angles */
+  /* Diagonal clip-path for slanted dividing lines (images stay upright) */
   .hero-mosaic > div:nth-child(1) {
-    clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+    clip-path: polygon(0 0, 95% 0, 85% 100%, 0 100%);
   }
   
   .hero-mosaic > div:nth-child(2) {
-    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 15% 100%);
   }
   
   .hero-mosaic > div:nth-child(3) {
-    clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 15% 100%);
   }
   
   .hero-mosaic > div:nth-child(4) {
-    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 15% 100%);
   }
 
   .hero-mosaic .img {
     position: absolute;
-    inset: 0;
+    inset: -6% -6% -6% -6%;
     background-size: cover;
     background-position: center;
-    opacity: 0.9;
+    filter: brightness(.92) saturate(1.08);
   }
 
-  /* Golden radial glow from center */
+  /* Replace white/neutral with exact burgundy/plum under every tile */
+  .hero-mosaic > div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(60% 70% at 50% 40%, color-mix(in oklab, var(--th-plum) 80%, var(--th-burgundy-2)) 0%, var(--th-burgundy-1) 85%);
+  }
+
+  /* Burgundy unifier on top of images (preserve PLA+ colors) */
+  .hero-mosaic > div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--th-burgundy-2) 35%, transparent), rgba(0,0,0,.45) 70%);
+    mix-blend-mode: multiply;
+    opacity: .95;
+  }
+
+  /* Global hero tint + gold glow for readability (exact to reference) */
   .hero-burgundy-tint {
     position: absolute;
     inset: 0;
-    background: 
-      radial-gradient(ellipse 800px 600px at 50% 40%, rgba(232,194,107,.18), transparent 70%),
-      linear-gradient(180deg, rgba(91,31,42,.25), rgba(0,0,0,.6) 70%, rgba(0,0,0,.8));
     pointer-events: none;
+    background:
+      radial-gradient(600px 300px at 48% 46%, color-mix(in oklab, var(--th-gold) 28%, transparent), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.60) 65%, rgba(0,0,0,.80));
   }
 
   .hero-fore {
@@ -247,15 +275,13 @@
     z-index: 2;
   }
 
+  /* Responsive: stack without diagonals on small screens */
   @media (max-width: 1024px) {
     .hero-mosaic {
       grid-template-columns: repeat(2, 1fr);
     }
-    .hero-mosaic > div:nth-child(1),
-    .hero-mosaic > div:nth-child(2),
-    .hero-mosaic > div:nth-child(3),
-    .hero-mosaic > div:nth-child(4) {
-      clip-path: none;
+    .hero-mosaic > div {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
   }
 
